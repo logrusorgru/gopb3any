@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package cat;
+
+message Cat {
+	string name = 1;
+	int32  tail_length = 2;
+	string favorite_food = 3;
+}
