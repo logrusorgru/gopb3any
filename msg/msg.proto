@@ -11,10 +11,3 @@ message Sih {
 	string key = 1;
 	Any value = 2;
 }
-
-/*
-message Element {
-  string fin = 1;
-  Any body = 2;
-}
-*/

@@ -30,7 +30,7 @@ func example_no1() error {
 		return err
 	}
 
-	fmt.Printf("Length of Repo is %d\n", repo.Len())
+	fmt.Printf("Length of repo is %d\n", repo.Len())
 	k, alice, err := repo.Pop()
 	if err != nil {
 		return err
@@ -107,6 +107,10 @@ func main() {
 		return
 	}
 
+	// show length of repo
+	fmt.Printf("Length of repo is %d\n", repo.Len())
+	fmt.Println("-----------------------------------------------")
+
 	// pop pop pop pop
 	for i := 0; i < 4; i++ {
 		key, msg, err := repo.Pop()
@@ -128,9 +132,9 @@ func main() {
 				t.Name, t.TailLength, t.FavoriteFood,
 			)
 		default:
-			log.Printf("Type error, expected *user.Pro or *cat.Cat, go %T", t)
+			log.Printf("Type error, expected *user.Pro or *cat.Cat, go %T\n", t)
 		}
-		fmt.Println("-------------------------------------------------------")
+		fmt.Println("-----------------------------------------------")
 	}
 
 	log.Println("Done")
