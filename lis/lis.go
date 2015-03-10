@@ -11,8 +11,12 @@ import (
 	"reflect"
 )
 
+var ErrNoOne = errors.New("lis.TypeRegister.Get: no one")
+
+// TypeRegister - type register
 type TypeRegister map[string]reflect.Type
 
+// Ser registers new type
 func (t TypeRegister) Set(i interface{}) {
 	if reflect.ValueOf(i).Kind() != reflect.Ptr {
 		panic(errors.New("TypeRegister.Set() argument must to be a pointer"))
@@ -20,19 +24,23 @@ func (t TypeRegister) Set(i interface{}) {
 	t[reflect.TypeOf(i).String()] = reflect.TypeOf(i)
 }
 
+// Get element of type, if no one - err will be ErrNoOne
 func (t TypeRegister) Get(name string) (interface{}, error) {
 	if typ, ok := t[name]; ok {
 		return reflect.New(typ.Elem()).Elem().Addr().Interface(), nil
 	}
-	return nil, errors.New("no one")
+	return nil, ErrNoOne
 }
 
+// shared type register
 var TypeReg = make(TypeRegister)
 
+// Repo - is LIFO pb storage
 type Repo struct {
 	lifo.Buffer
 }
 
+// Push values to storage (string and proto.Mesage)
 func (r *Repo) Push(key string, m proto.Message) error {
 	type_usl := reflect.TypeOf(m).String()
 	value, err := proto.Marshal(m)
@@ -58,6 +66,7 @@ func (r *Repo) Push(key string, m proto.Message) error {
 	return err
 }
 
+// Pop values from storage
 func (r *Repo) Pop() (string, proto.Message, error) {
 	var n int32
 	err := binary.Read(r, binary.LittleEndian, &n)

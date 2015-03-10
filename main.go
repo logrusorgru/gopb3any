@@ -13,10 +13,12 @@ import (
 )
 
 func init() {
+	// register our types
 	lis.TypeReg.Set(new(user.Pro))
 	lis.TypeReg.Set(new(cat.Cat))
 }
 
+// example function
 func example_no1() error {
 	usr := new(user.Pro)
 	usr.Name = "Alice"
@@ -87,21 +89,25 @@ func main() {
 		return
 	}
 
+	// push
 	if err := repo.Push("some key 2", push_tom); err != nil {
 		log.Println(err)
 		return
 	}
 
+	// push
 	if err := repo.Push("some key 3", push_bob); err != nil {
 		log.Println(err)
 		return
 	}
 
+	// push
 	if err := repo.Push("some key 4", push_kitty); err != nil {
 		log.Println(err)
 		return
 	}
 
+	// pop pop pop pop
 	for i := 0; i < 4; i++ {
 		key, msg, err := repo.Pop()
 		if err != nil {
@@ -109,6 +115,7 @@ func main() {
 			return
 		}
 		fmt.Printf("Key: '%s'\n", key)
+		// detect type of message
 		switch t := msg.(type) {
 		case *user.Pro:
 			fmt.Printf(
