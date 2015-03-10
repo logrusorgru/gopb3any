@@ -1,7 +1,7 @@
 gopb3any
 ========
 
-Example how to use protocol buffers v3.0.0.2-alpha Any type in golang
+Example how to use protocol buffers v3.0.0-alpha-2 Any type in golangre
 
 ### Project tree
 
@@ -17,18 +17,32 @@ Example how to use protocol buffers v3.0.0.2-alpha Any type in golang
 main.go
 ```
 
+### Prepare
+
+- Learn about Protocol Buffers [here](https://developers.google.com/protocol-buffers/).
+- Read about proto3 and get release v3.0.0-alpha-2+ [here](https://github.com/google/protobuf/releases)
+- Install it
+- Get golang protocol buffers
+  `go get -u github.com/golang/protobuf/{proto,protoc-gen-go}`
+
 ### How to use
 
 Get
-
 ```bash
 go get guthub.com/logrusorgru/gopb3any
 ```
 
 See sources
 
-Run
+Generate golang messages
+```
+cd $GOPATH/src/guthub.com/logrusorgru/gopb3any
+protoc --go_out=. msg/*.proto
+protoc --go_out=. user/*.proto
+protoc --go_out=. cat/*.proto
+```
 
+Run
 ```
 go run main.go
 ```

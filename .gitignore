@@ -22,3 +22,7 @@ _testmain.go
 *.exe
 *.test
 *.prof
+
+msg/msg.pb.go
+user/user.pb.go
+cat/cat.pb.go
