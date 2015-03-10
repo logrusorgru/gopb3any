@@ -1,7 +1,7 @@
 gopb3any
 ========
 
-Example how to use protocol buffers v3.0.0-alpha-2 Any type in golangre
+Example how to use protocol buffers v3.0.0-alpha-2 Any type in golang
 
 ### Project tree
 
