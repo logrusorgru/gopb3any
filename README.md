@@ -29,7 +29,7 @@ main.go
 
 Get
 ```bash
-go get -d guthub.com/logrusorgru/gopb3any
+go get -d github.com/logrusorgru/gopb3any
 ```
 
 See sources
